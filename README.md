@@ -1,6 +1,6 @@
-# serverless-examples
+# Serverless framework examples
 
-A bunch of Serverless framework projects to show how to deploy different type of resources.
+Serverless framework projects to show how to deploy different type of resources.
 
 Currently all examples are for AWS, but may look to expand it to other cloud platforms in the future.
 
