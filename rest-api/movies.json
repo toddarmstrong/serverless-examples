@@ -1,5 +1,5 @@
 {
-    "dev-rest-api-movies": [
+    "STAGE-rest-api-movies": [
         {
             "PutRequest": {
                 "Item": {

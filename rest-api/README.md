@@ -18,7 +18,15 @@ Deploy the project
 yarn run deploy
 ```
 
-Seed the database
+Before being able to seed the database, you need to edit the `STAGE` in `movies.json` to match the stage you are deploying to.
+
+```json
+{
+    "STAGE-rest-api-movies": [
+        {
+```
+
+Once the stage has been defined in the json file, run the following command.
 
 ```bash
 yarn run seed
