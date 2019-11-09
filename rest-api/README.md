@@ -4,6 +4,27 @@ A Node.js REST API utilising multiple Lambda functions per endpoint and a single
 
 The API is using DynamoDB as the data source, and contains a single table to store movies.
 
+## Deploy
+
+Install the dependancies via Yarn
+
+```bash
+yarn install
+```
+
+Deploy the project
+
+```bash
+yarn run deploy
+```
+
+Seed the database
+
+```bash
+yarn run seed
+```
+
+## API details
 
 | Endpoint          | Method | Example                                                                  | Data |
 | ----------------- |:------:| -------------------------------------------------------------------------| - |

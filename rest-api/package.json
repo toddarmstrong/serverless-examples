@@ -3,5 +3,9 @@
     "dependencies": {
         "aws-sdk": "^2.568.0",
         "uuid": "^3.3.3"
+    },
+    "scripts": {
+        "deploy": "source ../.env && sls deploy --profileName $PROFILE --regionName $REGION --stageName $STAGE --force",
+        "seed:rest-api": "source ../.env && aws dynamodb batch-write-item --request-items file://movies.json --profile $PROFILE"
     }
 }
