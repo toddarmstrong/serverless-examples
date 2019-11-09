@@ -1,0 +1,104 @@
+frameworkVersion: '>=1.5.0 <2.0.0'
+
+service:
+    name: ${self:custom.name}
+
+custom:
+    name: ${self:provider.stage}-rest-api
+
+    moviesTableName: ${self:custom.name}-movies
+
+provider:
+    name: aws
+    profile: ${opt:profileName}
+    stage: ${opt:stageName}
+    region: ${opt:regionName}
+    stackName: ${self:custom.name}
+    iamRoleStatements:
+        -
+            Effect: Allow
+            Action: dynamodb:*
+            Resource:
+                - Fn::Join:
+                    - ""
+                    -
+                        - "arn:aws:dynamodb:${self:provider.region}:"
+                        - Ref: AWS::AccountId
+                        - ":table/${self:custom.moviesTableName}"
+                - Fn::Join:
+                    - ""
+                    -
+                        - "arn:aws:dynamodb:${self:provider.region}:"
+                        - Ref: AWS::AccountId
+                        - ":table/${self:custom.moviesTableName}/index/GenreIndex"
+    environment:
+        MOVIES_TABLE_NAME: ${self:custom.name}-movies
+
+functions:
+
+    GetAllMovies:
+        name: ${self:custom.name}-get-all-movies
+        handler: src/handler.getAllMovies
+        events:
+            - http:
+                path: getAllMovies
+                method: get
+                cors: true
+
+    GetMovieById:
+        name: ${self:custom.name}-get-movie-by-id
+        handler: src/handler.getMovieById
+        events:
+            - http:
+                path: getMovieById
+                method: get
+                cors: true
+
+    GetMoviesByGenre:
+        name: ${self:custom.name}-get-movies-by-genre
+        handler: src/handler.getMoviesByGenre
+        events:
+            - http:
+                path: getMoviesByGenre
+                method: get
+                cors: true
+
+    AddMovie:
+        name: ${self:custom.name}-add-movie
+        handler: src/handler.addMovie
+        events:
+            - http:
+                path: addMovie
+                method: post
+                cors: true
+
+resources:
+    Resources:
+        MoviesDynamoDBTable:
+            Type: AWS::DynamoDB::Table
+            DeletionPolicy: Retain
+            Properties:
+                TableName: ${self:custom.moviesTableName}
+                BillingMode: PAY_PER_REQUEST
+                PointInTimeRecoverySpecification:
+                    PointInTimeRecoveryEnabled: true
+                AttributeDefinitions:
+                    -
+                        AttributeName: id
+                        AttributeType: S
+                    -
+                        AttributeName: genre
+                        AttributeType: S
+                KeySchema:
+                    -
+                        AttributeName: id
+                        KeyType: HASH
+                GlobalSecondaryIndexes:
+                    -
+                        IndexName: GenreIndex
+                        KeySchema:
+                            -
+                                AttributeName: genre
+                                KeyType: HASH
+                        Projection:
+                            ProjectionType: ALL

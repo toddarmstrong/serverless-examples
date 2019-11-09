@@ -1,0 +1,7 @@
+{
+    "name": "rest-api",
+    "dependencies": {
+        "aws-sdk": "^2.568.0",
+        "uuid": "^3.3.3"
+    }
+}

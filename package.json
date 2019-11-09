@@ -1,5 +1,12 @@
 {
     "name": "serverless-examples",
     "repository": "git@github.com:toddarmstrong/serverless-examples.git",
-    "author": "Todd Armstrong <todd@toddarmstrong.com.au>"
+    "author": "Todd Armstrong <todd@toddarmstrong.com.au>",
+    "scripts": {
+        "deploy:rest-api": "source .env && cd rest-api && sls deploy --profileName $PROFILE --regionName $REGION --stageName $STAGE --force",
+        "seed:rest-api": "source .env && cd rest-api && aws dynamodb batch-write-item --request-items file://movies.json --profile $PROFILE"
+    },
+    "devDependencies": {
+        "dotenv-export": "^2.0.0"
+    }
 }

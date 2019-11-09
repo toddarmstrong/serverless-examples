@@ -1,8 +1,16 @@
 # serverless-examples
 
-This repository contains a bunch of Serverless projects of how to deploy different type of resources.
+A bunch of Serverless framework projects to show how to deploy different type of resources.
 
 Currently all examples are for AWS, but may look to expand it to other cloud platforms in the future.
+
+## Prerequisites
+
+Make sure you have the Serverless CLI and AWS CLI installed globally.
+
+[Serverless CLI install guide](https://serverless.com/framework/docs/providers/aws/guide/installation/)
+
+[AWS CLI install guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 
 ## Guide
 

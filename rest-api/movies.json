@@ -1,0 +1,24 @@
+{
+    "dev-rest-api-movies": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": { "S": "46141ac4-8e12-4287-a7b3-9028aa3dbe93" },
+                    "name": { "S": "The Silence of the Lambs" },
+                    "year": { "S": "1991" },
+                    "genre": { "S": "thriller" }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": { "S": "b4c9dc0b-b09e-4d8e-b6f2-bc5ddb8d907b" },
+                    "name": { "S": "Hannibal" },
+                    "year": { "S": "2001" },
+                    "genre": { "S": "thriller" }
+                }
+            }
+        }
+    ]
+}
