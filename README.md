@@ -18,13 +18,11 @@ Start with renaming the `.env.example` file to `.env` and change the PROFILE var
 
 All resource naming depends on the stage, so you will be able to deploy separate instances of the examples for different stages (ex dev, staging, test, production).
 
-Install the dependancies:
+Install the dependancies to inject the environment variables:
 
 ```bash
 yarn install
 ```
-
-In the `package.json` file, there are NPM scripts to deploy the different examples that use the profile and stage variables set in the .env file.
 
 ## Useful links
 
