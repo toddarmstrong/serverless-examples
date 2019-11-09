@@ -6,6 +6,6 @@
     },
     "scripts": {
         "deploy": "source ../.env && sls deploy --profileName $PROFILE --regionName $REGION --stageName $STAGE --force",
-        "seed:rest-api": "source ../.env && aws dynamodb batch-write-item --request-items file://movies.json --profile $PROFILE"
+        "seed": "source ../.env && aws dynamodb batch-write-item --request-items file://movies.json --profile $PROFILE"
     }
 }
