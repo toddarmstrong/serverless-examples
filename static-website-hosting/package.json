@@ -1,0 +1,6 @@
+{
+    "name": "static-website-hosting",
+    "scripts": {
+        "deploy": "source ../.env && sls deploy --profileName $PROFILE --stageName $STAGE --force"
+    }
+}
